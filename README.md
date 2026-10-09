@@ -1,3 +1,12 @@
+<!-- WORLDFORGE BADGES -->
+# 🌍 WorldForge Geography Academy
+
+[![CI/CD](https://github.com/iamrichmack111/worldforge-geography-academy/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/iamrichmack111/worldforge-geography-academy/actions)
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![Docker](https://img.shields.io/badge/Docker-GHCR-blue?logo=docker)
+![Playwright](https://img.shields.io/badge/Playwright-Testing-green)
+![Education](https://img.shields.io/badge/Geography-Education-purple)
+
 <div align="center">
 
 # 🌍 WorldForge Geography Academy
