@@ -10,3 +10,12 @@ classroom.sqlite3*
 media
 release-artifacts
 *.zip
+
+# Never package family or student data into containers
+*.sqlite3
+*.sqlite3-*
+*.db
+.env
+.env.*
+.venv
+media/tmp

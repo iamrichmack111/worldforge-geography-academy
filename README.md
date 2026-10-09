@@ -1,73 +1,96 @@
-# WorldForge — Procedural World Generator
+<div align="center">
 
-Seeded, offline 2D world generation with terrain elevation, temperature, moisture, biomes, rivers, lakes, and an underground cave layer.
+# 🌍 WorldForge Geography Academy
 
-## Install
+**Interactive 3D geography · Earth science · Family learning · Homework**
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+[![WorldForge CI/CD](https://github.com/iamrichmack111/worldforge-geography-academy/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/iamrichmack111/worldforge-geography-academy/actions/workflows/ci-cd.yml)
+![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Self_Hosted-2496ED?logo=docker&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-Screenshots-2EAD33?logo=playwright&logoColor=white)
+![Earth Science](https://img.shields.io/badge/Focus-Earth_Science-7755CC)
+![License](https://img.shields.io/badge/License-Not_Specified-gray)
 
-## Generate a world
+[**Quick Start**](#-quick-start) • [**Gallery**](#-screenshots) • [**Container**](#-docker) • [**Documentation**](docs/wiki/Home.md) • [**Demo Releases**](https://github.com/iamrichmack111/worldforge-geography-academy/releases)
 
-```bash
-python worldforge.py --seed 2026 --size 512 --rivers 35 --output output
-```
+</div>
 
-Change `--seed` to generate a different world. The same seed and settings generate the same map with the same NumPy version. `--sea-level` changes how much terrain is underwater.
+## About the project
 
-## Outputs
+WorldForge is a **self-hosted geography and Earth science learning prototype** for homeschool students, parents and teachers. It combines interactive geography activities with parent-managed assignments, grading and progress tracking.
 
-- `world.png` — colored biome map
-- `elevation.png`, `moisture.png`, `temperature.png` — grayscale simulation layers
-- `caves.png` — underground cave system
-- `world.npz` — numerical layers for future simulation and game development
-- `world.json` — metadata and biome counts
+### Learning experiences
 
-## Roadmap
+| Area | What you can do |
+|---|---|
+| 3D terrain | Explore simulated elevation, climate, coastlines and caves |
+| Landform quest | Click learning spots for mountains, canyons, valleys and plateaus |
+| Earth science | Learn about the crust, mantle, core and Earth's physical processes |
+| Continents | Study seven continents and physical geography |
+| Homework | Assign, submit, review and grade work |
+| Daily challenges | Complete increasingly long geography exercises |
+| Family accounts | Student, parent and teacher roles with account linking |
+| Study tools | Quizzes, worksheets, flashcards, facts and themes |
 
-- Downhill flow accumulation for connected river networks and large drainage basins
-- Erosion and sediment transport
-- 3D terrain mesh export (OBJ/glTF)
-- Town placement, roads, and evolving civilization simulation
-- Chunked/infinite world generation
+> **Geography note:** The generated 3D world is **fictional**, not actual satellite or elevation data. The app is for a trusted local network, not an internet-facing service for children's records.
 
-## Notes
+## 📸 Screenshots
 
-This is a 2D heightmap-based world model, not a photorealistic 3D renderer. Rivers use simple local downhill tracing (some will end in inland basins). The cave layer is independently generated using cellular automata.
+### Redesigned login
 
-## Interactive map viewer
+![WorldForge student and parent login](media/screenshots/login.png)
 
-Run this from the project folder:
+### Clickable mountain and terrain lessons
 
-```bash
-python3 -m http.server 8080
-```
+![WorldForge mountain learning spots](media/screenshots/mountains.png)
 
-Visit http://localhost:8080/viewer.html to zoom, pan, and switch between terrain, temperature, moisture, elevation, and cave maps. The viewer reads files from `output/` (a pre-generated seed 2026 is included). Re-run the generator with `--output output`, then refresh the page to view another world.
+### 3D terrain explorer
 
-## 3D geography lessons
+![WorldForge simulated terrain](media/screenshots/earth-3d.png)
 
-Run `python3 -m http.server 8080`, then open [Geography Lab](http://localhost:8080/geography3d.html). See `GEOGRAPHY_3D_README.md` for guided exercises, quiz content, and model limitations.
-
-## Screenshots & demo
-
-![Python](https://img.shields.io/badge/Python-3.12-blue) ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED) ![Tests](https://img.shields.io/badge/Tests-Unittest-informational) ![Playwright](https://img.shields.io/badge/Playwright-Screenshots-green)
-
-The narrated demo video is attached to the latest [GitHub release](../../releases/latest).
-
-| Classroom | Mountain quest | 3D geography |
-|---|---|---|
-| ![Classroom](media/screenshots/login.png) | ![Mountains](media/screenshots/mountains.png) | ![3D](media/screenshots/earth-3d.png) |
-
-### Container
+## 🚀 Quick start
 
 ```bash
-docker compose up --build -d
+python3 -m pip install -r requirements.txt
+PORT=8032 python3 server.py
 ```
 
-Open http://localhost:8032/classroom.html.
+Open **http://localhost:8032/classroom.html**. On the family LAN, use **http://family.local:8032/classroom.html**.
 
-> For local educational use. Not security-hardened for public child accounts.
+## 🐳 Docker
+
+```bash
+PORT=8032 docker compose up --build -d
+docker compose ps
+```
+
+Persistent student records live in the Docker volume. Keep that database private and out of Git.
+
+After **successful** GitHub Actions completion, the published image will be at:
+
+`ghcr.io/iamrichmack111/worldforge-geography-academy:latest`
+
+> A Dockerfile in the repository is not proof the registry image has been published; check [Actions](https://github.com/iamrichmack111/worldforge-geography-academy/actions) and [Packages](https://github.com/iamrichmack111?tab=packages).
+
+## 🧪 Tests and CI/CD
+
+```bash
+python3 -m pip install -r requirements.txt pytest playwright
+python3 -m unittest discover -s tests -p 'test_*.py' -v
+```
+
+GitHub Actions runs Python tests, JavaScript syntax checks and a Docker build. On `main`, passing builds are pushed to GitHub Container Registry (GHCR). See [.github/workflows/ci-cd.yml](.github/workflows/ci-cd.yml).
+
+Playwright screenshots are under `media/screenshots/`; browser E2E tests are in `tests/test_controls.py` and require a Chromium installation.
+
+## 🎬 Narrated walkthrough
+
+[Browse demo releases](https://github.com/iamrichmack111/worldforge-geography-academy/releases). Source tooling is in `scripts/`.
+
+## 📚 Documentation
+
+[Installation](docs/wiki/Installation.md) · [Family accounts](docs/wiki/Family-Accounts.md) · [Architecture](docs/wiki/Architecture.md) · [Study guide](docs/wiki/Study-Guide.md)
+
+## License
+
+No open-source license has been selected yet. All rights reserved unless a license is explicitly added.

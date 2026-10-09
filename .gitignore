@@ -23,3 +23,13 @@ media/tmp/
 __pycache__/
 *.pyc
 .venv/
+
+# Never commit family or student data
+*.sqlite3
+*.sqlite3-*
+*.db
+.env
+.env.*
+media/tmp/
+.venv/
+__pycache__/
