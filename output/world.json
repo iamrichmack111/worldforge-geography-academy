@@ -1,0 +1,19 @@
+{
+  "seed": 2026,
+  "size": 512,
+  "sea_level": 0.47,
+  "biomes": {
+    "deep_ocean": 42166,
+    "ocean": 35623,
+    "beach": 9343,
+    "desert": 9020,
+    "grassland": 24531,
+    "forest": 22057,
+    "rainforest": 819,
+    "scrub": 49752,
+    "mountain": 34084,
+    "snow": 33925,
+    "freshwater": 781,
+    "wetland": 43
+  }
+}

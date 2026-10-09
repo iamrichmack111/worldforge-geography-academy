@@ -1,0 +1,15 @@
+services:
+  worldforge:
+    build: .
+    ports:
+      - "${PORT:-8032}:8081"
+    environment:
+      PORT: "8081"
+      WORLDFORGE_HOST: "0.0.0.0"
+      WORLDFORGE_DB: "/data/classroom.sqlite3"
+      WORLDFORGE_TEACHER_CODE: "${WORLDFORGE_TEACHER_CODE:-}"
+    volumes:
+      - worldforge_data:/data
+    restart: unless-stopped
+volumes:
+  worldforge_data:

@@ -1,0 +1,25 @@
+classroom.sqlite3
+classroom.sqlite3-*
+__pycache__/
+.pytest_cache/
+.venv/
+
+.env
+.env.*
+media/tmp/
+release-artifacts/
+node_modules/
+*.mp4
+*.wav
+*.mp3
+
+# Private and temporary files
+*.sqlite3
+*.sqlite3-*
+*.db
+.env
+.env.*
+media/tmp/
+__pycache__/
+*.pyc
+.venv/
